@@ -1,5 +1,5 @@
 import React from "react";
-import NoteView from "./NoteView";
+import NoteView from "./Note";
 import Home from "./Home";
 
 const Notes = ({
