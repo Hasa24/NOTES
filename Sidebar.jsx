@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Sidebar.Module.css";
+import "../styles.css";
 
 const Sidebar = ({
   setNoteBtnClick,
