@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Input.Module.css";
+import "../styles.css";
 
 const Input = ({ id, handleNewNote }) => {
   const [note, setNote] = React.useState("");
