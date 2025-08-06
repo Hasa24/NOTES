@@ -63,4 +63,4 @@ const NoteView = ({ name, color, id, isMobile, display, setDisplay }) => {
   );
 };
 
-export default NoteView;
+export default Note;
