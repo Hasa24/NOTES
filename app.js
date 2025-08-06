@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import NoteView from "./components/NoteView";
-import Sidebar from "./components/Sidebar";
-import "./styles/App.css";
-import CreateNote from "./components/CreateNote";
-import Notes from "./components/Notes";
+import NoteView from "./Note";
+import Sidebar from "./Sidebar";
+import "./styles.css;
+import CreateNote from "./CreateNote";
+import Notes from "./Notes";
 
 function App() {
   const [noteBtnClick, setNoteBtnClick] = useState(false);
