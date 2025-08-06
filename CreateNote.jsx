@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/CreateNote.Module.css";
+import "../styles.css";
 
 const colorOptions = [
   { color: "var(--notes-color-1)", name: "Color 1" },
