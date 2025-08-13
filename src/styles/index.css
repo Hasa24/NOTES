@@ -16,10 +16,10 @@
   --input-color: #9a9a9a;
   --black-color: #000000;
   --white-color: #ffffff;
-  --home-back-color: #e8e8e8;
-  --notes-back-color: #f7ecdc;
-  --border-color: #cccccc;
-  --send-btn-color: #ababab;
+  --home-back-color: #001F8B;
+  --notes-back-color:#DCDCDC;
+  --border-color: #ffffff;
+  --send-btn-color: #DCDCDC;
 }
 /* Utility Classes */
 .flex {
@@ -39,6 +39,6 @@
 }
 
 body {
-  background-color: var(--notes-back-color);
+  background-color: #DAE5F5;
   overflow: hidden;
 }

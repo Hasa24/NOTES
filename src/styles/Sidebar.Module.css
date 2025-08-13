@@ -1,0 +1,115 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 100%;
+  background-color: var(--white-color);
+  font-weight: 500;
+  overflow-y: auto;
+}
+
+.sidebar-heading {
+  width: 100%;
+  color: var(--black-color);
+  font-size: 1.5rem;
+  padding: 1rem 0 1rem 1.4rem;
+  position: sticky;
+  top: 0;
+  background: white;
+}
+
+.sidebar-title {
+  margin: 0.8rem 0 2rem 0rem;
+}
+
+.sidebar-notes-list {
+  padding: 1rem 0 1rem 1.5rem;
+  width: 100%;
+}
+
+.sidebar-note-element {
+  margin-bottom: 1rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+.note-list-icon {
+  background-color: var(--notes-color-1);
+  color: var(--white-color);
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.2rem;
+}
+
+.note-selected {
+  background-color: var(--notes-back-color);
+  padding: 0.5rem;
+  border-end-start-radius: 1.5rem;
+  border-start-start-radius: 1.5rem;
+}
+
+/* Hide scrollbar */
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Add Button at Bottom */
+.add-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.create-notes-btn {
+   background-color: #001F8B;
+  color: white;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  font-size: 30px;
+  font-weight: bold;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease;
+  margin-right: 0;
+}
+
+.create-notes-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    text-align: center;
+  }
+  .sidebar-heading {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .note-selected {
+    border-end-start-radius: 0rem;
+    border-start-start-radius: 0rem;
+    border-radius: 1rem;
+  }
+  .sidebar-notes-list {
+    padding: 1rem;
+  }
+  .add-btn-container {
+    justify-content: center;
+  }
+  .create-notes-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 26px;
+  }
+}
