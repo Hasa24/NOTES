@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/POCKET-NOTES-REACT/static/css/main.258c8daa.css",
-    "main.js": "/POCKET-NOTES-REACT/static/js/main.846e2463.js",
-    "static/media/home.png": "/POCKET-NOTES-REACT/static/media/home.051c5dd6cf08bd17366f.png",
-    "index.html": "/POCKET-NOTES-REACT/index.html",
-    "main.258c8daa.css.map": "/POCKET-NOTES-REACT/static/css/main.258c8daa.css.map",
-    "main.846e2463.js.map": "/POCKET-NOTES-REACT/static/js/main.846e2463.js.map"
+    "main.css": "/NOTES/static/css/main.258c8daa.css",
+    "main.js": "/NOTES/static/js/main.14d800f2.js",
+    "static/media/home.png": "/NOTES/static/media/home.051c5dd6cf08bd17366f.png",
+    "index.html": "/NOTES/index.html",
+    "main.258c8daa.css.map": "/NOTES/static/css/main.258c8daa.css.map",
+    "main.14d800f2.js.map": "/NOTES/static/js/main.14d800f2.js.map"
   },
   "entrypoints": [
     "static/css/main.258c8daa.css",
-    "static/js/main.846e2463.js"
+    "static/js/main.14d800f2.js"
   ]
 }
