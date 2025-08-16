@@ -1,15 +1,21 @@
 .note-header {
-  padding: 0.6rem;
-  background-color: var(--home-back-color);
-  width: 70%;
   position: fixed;
   top: 0;
-  right: 0;
+  left: 300px;
+  right: 0; /* fill remaining space */
+  height: 50px;
+  background-color: #001F8B;
+  display: flex;
+  align-items: center; /* vertical centering */
+  padding: 0 1rem;
+  box-sizing: border-box;
+  z-index: 10; /* stay above other elements */
 }
+
 .header-note-title {
   font-weight: 500;
   font-size: 1.3rem;
-  color: var(--white-color);
+  color: white;
 }
 
 .header-note-icon {
@@ -18,11 +24,16 @@
   width: 3rem;
   height: 3rem;
   font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
-/* media queries */
+/* mobile adjustments */
 @media screen and (max-width: 768px) {
   .note-header {
+    left: 0;
     width: 100%;
   }
 }

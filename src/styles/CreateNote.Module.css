@@ -30,17 +30,17 @@
   margin-bottom: 1rem;
 }
 .create-note-input {
-  border: #DAE5F5;
+   border: 1px solid #cccccc;
   padding: 0.3rem;
   width: 73%;
 }
 .create-note-input:focus {
   outline: none;
-  border: #f93f00;
+  border: 1px solid lightseagreen;
 }
 .create-note-input::placeholder {
   font-size: 1rem;
-  color:#DAE5F5;
+  color: #9a9a9a;
 }
 .label {
   margin-right: 1.5rem;
@@ -73,7 +73,7 @@
   cursor: pointer;
 }
 .selected {
-  border: #DAE5F5;
+  border: 0.2rem solid lightseagreen;
 }
 .show-error {
   color: #ffffff;

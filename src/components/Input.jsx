@@ -5,12 +5,11 @@ const Input = ({ id, handleNewNote }) => {
   const [note, setNote] = React.useState("");
 
   const handleInputChange = (e) => {
-    const { value } = e.target;
-    setNote(value);
+    setNote(e.target.value);
   };
 
   const handleSendClick = () => {
-    //scroll to bottom
+    if (!note.trim()) return; // prevent empty notes
 
     const newNote = {
       date: new Date().toLocaleDateString(),
@@ -22,42 +21,35 @@ const Input = ({ id, handleNewNote }) => {
     handleNewNote(newNote);
 
     const notesGroup = JSON.parse(localStorage.getItem("noteGroups")) || [];
-
     const groupIndex = notesGroup.findIndex((group) => group.id === id);
+
     if (groupIndex === -1) {
       console.error(`Group with ID ${id} not found`);
       return;
     }
 
-    //  new note into the notes array of the group
-    const group = notesGroup[groupIndex];
-
-    group.notes.push(newNote);
-
-    // Update the notes group
+    notesGroup[groupIndex].notes.push(newNote);
     localStorage.setItem("noteGroups", JSON.stringify(notesGroup));
 
-    //clear the textarea
     setNote("");
   };
+
   return (
-    <div className=" input-container">
-      <div className=" input-div flex flex-row">
+      <div className="input-inner">
         <textarea
           name="note"
-          id=""
-          cols="30"
-          rows="6"
-          className="note-input "
+          className="note-input"
           placeholder="Enter your text here..........."
           onChange={handleInputChange}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
+              e.preventDefault(); // prevent newline
               handleSendClick();
             }
           }}
           value={note}
-        ></textarea>
+          rows="4"
+        />
         <svg
           className="send-btn"
           width="25"
@@ -73,7 +65,6 @@ const Input = ({ id, handleNewNote }) => {
           />
         </svg>
       </div>
-    </div>
   );
 };
 

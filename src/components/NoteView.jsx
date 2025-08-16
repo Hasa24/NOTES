@@ -6,7 +6,6 @@ import "../styles/Input.Module.css";
 import NoteHeader from "./NoteHeader";
 import Input from "./Input";
 
-
 const NoteView = ({ name, color, id, isMobile, display, setDisplay }) => {
   const [notes, setNotes] = React.useState([]);
   const [groupId, setGroupId] = React.useState("");
@@ -27,12 +26,10 @@ const NoteView = ({ name, color, id, isMobile, display, setDisplay }) => {
 
   const formatDateTime = (rawDate, rawTime) => {
     if (!rawDate) return rawTime || "";
-    // Try to parse "DD/MM/YYYY" or similar
     let day, month, year;
-    const dateParts = rawDate.split(/[\/\-\.]/); // split by / - or .
+    const dateParts = rawDate.split(/[\/\-\.]/);
     if (dateParts.length === 3) {
       [day, month, year] = dateParts;
-      // Convert month number to name if it's numeric
       if (!isNaN(month)) {
         month = new Date(0, month - 1).toLocaleString("default", { month: "long" });
       }
@@ -68,18 +65,20 @@ const NoteView = ({ name, color, id, isMobile, display, setDisplay }) => {
         setDisplay={setDisplay}
       />
 
-      {groupId === id && notes.length > 0 ? (
-        notes.map((note, index) => (
-          <div className="note-view" key={index}>
-            <div className="note">{note?.content}</div>
-            <div className="time-container">
-              {formatDateTime(note?.date, note?.time)}
+      <div className="note-list">
+        {groupId === id && notes.length > 0 ? (
+          notes.map((note, index) => (
+            <div className="note-view" key={index}>
+              <div className="note">
+                {note?.content}
+                <span className="time">{formatDateTime(note?.date, note?.time)}</span>
+              </div>
             </div>
-          </div>
-        ))
-      ) : (
-        <p className="example-txt">Start Writing Notes Here!</p>
-      )}
+          ))
+        ) : (
+          <p className="example-txt">Start Writing Notes Here!</p>
+        )}
+      </div>
 
       <Input id={id} handleNewNote={handleNewNote} />
     </div>
