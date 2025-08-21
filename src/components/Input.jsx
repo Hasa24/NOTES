@@ -28,28 +28,36 @@ const Input = ({ id, handleNewNote }) => {
       return;
     }
 
+    // insert into notes array
     notesGroup[groupIndex].notes.push(newNote);
+
+    // update localStorage
     localStorage.setItem("noteGroups", JSON.stringify(notesGroup));
 
+    // clear the textarea
     setNote("");
   };
 
   return (
-      <div className="input-inner">
+    <div className="input-container">
+      <div className="input-div flex flex-row">
         <textarea
           name="note"
+          cols="30"
+          rows="6"
           className="note-input"
-          placeholder="Enter your text here..........."
+          placeholder="Enter your text here..."
           onChange={handleInputChange}
           onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              e.preventDefault(); // prevent newline
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
               handleSendClick();
             }
           }}
           value={note}
-          rows="4"
-        />
+        ></textarea>
+
+        {/* Send Button */}
         <svg
           className="send-btn"
           width="25"
@@ -58,13 +66,17 @@ const Input = ({ id, handleNewNote }) => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           onClick={handleSendClick}
+          style={{
+            cursor: note.trim() ? "pointer" : "not-allowed",
+          }}
         >
           <path
             d="M0 29V18.125L14.5 14.5L0 10.875V0L34.4375 14.5L0 29Z"
-            fill="#ABABAB"
+            fill={note.trim() ? "#001F8B" : "#ABABAB"}
           />
         </svg>
       </div>
+    </div>
   );
 };
 

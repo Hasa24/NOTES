@@ -40,5 +40,5 @@
 
 body {
   background-color: var(--notes-back-color);
-  overflow: hidden;
+  overflow: auto;
 }

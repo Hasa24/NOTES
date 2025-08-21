@@ -54,9 +54,10 @@ const NoteView = ({ name, color, id, isMobile, display, setDisplay }) => {
 
   return (
     <div
-      className="note-view-container"
+      className="note-view-wrapper"
       style={{ display: isMobile && !display ? "none" : "" }}
     >
+      {/* Header */}
       <NoteHeader
         name={name}
         color={color}
@@ -65,22 +66,28 @@ const NoteView = ({ name, color, id, isMobile, display, setDisplay }) => {
         setDisplay={setDisplay}
       />
 
-      <div className="note-list">
-        {groupId === id && notes.length > 0 ? (
-          notes.map((note, index) => (
-            <div className="note-view" key={index}>
-              <div className="note">
-                {note?.content}
-                <span className="time">{formatDateTime(note?.date, note?.time)}</span>
+      {/* Notes + Input (flex column) */}
+      <div className="note-body">
+        <div className="note-view-container">
+          {groupId === id && notes.length > 0 ? (
+            notes.map((note, index) => (
+              <div className="note-view" key={index}>
+                <div className="note">
+                  {note?.content}
+                  <span className="time">
+                    {formatDateTime(note?.date, note?.time)}
+                  </span>
+                </div>
               </div>
-            </div>
-          ))
-        ) : (
-          <p className="example-txt">Start Writing Notes Here!</p>
-        )}
-      </div>
+            ))
+          ) : (
+            <p className="example-txt">Start Writing Notes Here!</p>
+          )}
+        </div>
 
-      <Input id={id} handleNewNote={handleNewNote} />
+        {/* Sticky input */}
+        <Input id={id} handleNewNote={handleNewNote} />
+      </div>
     </div>
   );
 };

@@ -1,37 +1,35 @@
+/* outer container: fixed at bottom */
 .input-container {
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  right:0;
-  padding: 1rem;
+  left: 300px;              /* space for sidebar */
+  right: 0px;
+  background-color: #001F8B; /* dark blue padding */
+  padding: 0.75rem 1rem;
   box-sizing: border-box;
-  left: 300px;
-  flex: 1;
-  width: 100%;
-
+  border-top-left-radius: 0.5rem;
 }
 
-.input-inner {
-  background-color: #001F8B;
-  border-radius: 0.75rem;
+/* inner white box */
+.input-div {
+  background: #001F8B;;          /* white inner box */
+  border-radius: 0.5rem;
   display: flex;
   align-items: flex-start;
   padding: 0.5rem;
-  width: 100%;        
-  max-width: 100%;   
-  margin: 0;          
-  box-sizing: border-box;
-  left: 300px;
+  width: 100%;
 }
 
-
+/* text area */
 .note-input {
-  flex: 1;
-  padding: 0.5rem 0.75rem;
+  background-color: #fff;
+  width: 100%;
+  padding: 0.75rem 1rem;
   border-radius: 0.5rem;
   border: none;
   font-size: 1rem;
+  box-sizing: border-box;
   resize: none;
-  min-height: 3rem; 
 }
 
 .note-input:focus {
@@ -43,22 +41,13 @@
   color: #9a9a9a;
 }
 
+/* send button */
 .send-btn {
   margin-left: 0.5rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  flex-shrink: 0;
+  align-self: center;
+  transition: transform 0.2s ease;
 }
 
 .send-btn:hover {
   transform: scale(1.2);
-}
-
-@media screen and (max-width: 768px) {
-  .input-container {
-    left: 0;
-    width: 100%;
-    padding: 0.5rem; 
-  }
 }
