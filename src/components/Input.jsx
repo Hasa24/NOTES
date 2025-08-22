@@ -15,16 +15,7 @@ const Input = ({ id, handleNewNote }) => {
 
     const newNote = {
       content: note,
-      date: now.toLocaleDateString("en-GB", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-      }), // e.g. 22 Aug 2025
-      time: now.toLocaleTimeString("en-US", {
-        hour: "numeric",
-        minute: "2-digit",
-        hour12: true,
-      }), // e.g. 11:42 AM
+      timestamp: now.toISOString(), // ✅ save in ISO format (universal & consistent)
       id: Math.floor(Math.random() * 1000),
     };
 
