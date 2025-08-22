@@ -13,9 +13,25 @@ const Input = ({ id, handleNewNote }) => {
 
     const now = new Date();
 
+    // ✅ Helper to pad numbers
+    const pad = (num) => num.toString().padStart(2, "0");
+
+    // ✅ Format Date (22 Aug 2025)
+    const dateStr = `${pad(now.getDate())} ${now.toLocaleString("en-US", {
+      month: "short",
+    })} ${now.getFullYear()}`;
+
+    // ✅ Format Time (11:42 AM)
+    const hours = now.getHours();
+    const minutes = pad(now.getMinutes());
+    const ampm = hours >= 12 ? "PM" : "AM";
+    const timeStr = `${((hours + 11) % 12) + 1}:${minutes} ${ampm}`;
+
     const newNote = {
       content: note,
-      timestamp: now.toISOString(), // ✅ save in ISO format (universal & consistent)
+      timestamp: now.toISOString(), // for consistent storage
+      date: dateStr,                // for display
+      time: timeStr,                // for display
       id: Math.floor(Math.random() * 1000),
     };
 
