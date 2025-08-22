@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/Home.Module.css";
 import homeImg from "../assets/home.png";
 
+
 const Home = ({ noteBtnClick, isMobile }) => {
   const [noteGroups, setNoteGroups] = useState(
     JSON.parse(localStorage.getItem("noteGroups"))

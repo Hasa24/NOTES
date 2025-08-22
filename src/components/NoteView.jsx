@@ -24,21 +24,46 @@ const NoteView = ({ name, color, id, isMobile, display, setDisplay }) => {
     setNotes(group.notes || []);
   }, [id]);
 
-  const formatDateTime = (rawDate, rawTime) => {
-    if (!rawDate) return rawTime || "";
-    let day, month, year;
-    const dateParts = rawDate.split(/[\/\-\.]/);
-    if (dateParts.length === 3) {
-      [day, month, year] = dateParts;
-      if (!isNaN(month)) {
-        month = new Date(0, month - 1).toLocaleString("default", { month: "long" });
-      }
+  // Format date
+  const formatDate = (rawDate) => {
+    if (!rawDate) return "";
+    const dateParts = rawDate.split(/[-\/\.]/);
+    let year, month, day;
+
+    if (dateParts[0].length === 4) {
+      [year, month, day] = dateParts; // YYYY-MM-DD
     } else {
-      return rawDate + (rawTime ? `.${rawTime}` : "");
+      [day, month, year] = dateParts; // DD/MM/YYYY
     }
-    return `${day}.${month}.${year}${rawTime ? `.${rawTime}` : ""}`;
+
+    year = parseInt(year, 10);
+    month = parseInt(month, 10) - 1; // JS months 0-11
+    day = parseInt(day, 10);
+
+    const dateObj = new Date(year, month, day);
+    return dateObj.toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
   };
 
+  // Format time
+  const formatTime = (rawTime) => {
+    if (!rawTime) return "";
+    const timeParts = rawTime.split(":");
+    const hours = parseInt(timeParts[0], 10);
+    const minutes = parseInt(timeParts[1], 10);
+
+    const dateObj = new Date(1970, 0, 1, hours, minutes);
+    return dateObj.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    });
+  };
+
+  // Add new note
   const handleNewNote = (value) => {
     setNotes((prevNotes) => {
       const updatedNotes = [...prevNotes, value];
@@ -57,7 +82,6 @@ const NoteView = ({ name, color, id, isMobile, display, setDisplay }) => {
       className="note-view-wrapper"
       style={{ display: isMobile && !display ? "none" : "" }}
     >
-      {/* Header */}
       <NoteHeader
         name={name}
         color={color}
@@ -66,17 +90,20 @@ const NoteView = ({ name, color, id, isMobile, display, setDisplay }) => {
         setDisplay={setDisplay}
       />
 
-      {/* Notes + Input (flex column) */}
       <div className="note-body">
         <div className="note-view-container">
           {groupId === id && notes.length > 0 ? (
             notes.map((note, index) => (
               <div className="note-view" key={index}>
                 <div className="note">
-                  {note?.content}
-                  <span className="time">
-                    {formatDateTime(note?.date, note?.time)}
-                  </span>
+                  <div className="note-content">{note?.content}</div>
+
+                  {/* Unified date + time row */}
+                  <div className="note-time">
+                    {formatDate(note?.date)}{" "}
+                    <span className="dot">•</span>{" "}
+                    {formatTime(note?.time)}
+                  </div>
                 </div>
               </div>
             ))
@@ -85,7 +112,6 @@ const NoteView = ({ name, color, id, isMobile, display, setDisplay }) => {
           )}
         </div>
 
-        {/* Sticky input */}
         <Input id={id} handleNewNote={handleNewNote} />
       </div>
     </div>
