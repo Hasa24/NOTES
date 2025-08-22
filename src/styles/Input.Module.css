@@ -1,26 +1,23 @@
-/* outer container: fixed at bottom */
+
 .input-container {
   position: fixed;
   bottom: 0;
-  left: 300px;              /* space for sidebar */
+  left: 300px;              
   right: 0px;
-  background-color: #001F8B; /* dark blue padding */
+  background-color: #001F8B; 
   padding: 0.75rem 1rem;
   box-sizing: border-box;
   border-top-left-radius: 0.5rem;
 }
 
-/* inner white box */
 .input-div {
-  background: #001F8B;;          /* white inner box */
+  background: #001F8B;;          
   border-radius: 0.5rem;
   display: flex;
   align-items: flex-start;
   padding: 0.5rem;
   width: 100%;
 }
-
-/* text area */
 .note-input {
   background-color: #fff;
   width: 100%;
@@ -41,7 +38,6 @@
   color: #9a9a9a;
 }
 
-/* send button */
 .send-btn {
   margin-left: 0.5rem;
   align-self: center;

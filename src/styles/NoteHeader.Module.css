@@ -2,14 +2,14 @@
   position: fixed;
   top: 0;
   left: 300px;
-  right: 0; /* fill remaining space */
+  right: 0; 
   height: 50px;
   background-color: #001F8B;
   display: flex;
-  align-items: center; /* vertical centering */
+  align-items: center; 
   padding: 0 1rem;
   box-sizing: border-box;
-  z-index: 10; /* stay above other elements */
+  z-index: 10; 
 }
 
 .header-note-title {
@@ -30,7 +30,6 @@
   border-radius: 50%;
 }
 
-/* mobile adjustments */
 @media screen and (max-width: 768px) {
   .note-header {
     left: 0;

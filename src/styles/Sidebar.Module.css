@@ -2,7 +2,6 @@
   --sidebar-width: 300px;
 }
 
-/* Sidebar container */
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -16,7 +15,6 @@
   box-sizing: border-box;
 }
 
-/* Sidebar heading */
 .sidebar-heading {
   font-size: 28px;
   font-weight: 600;
@@ -26,17 +24,16 @@
   border: none;
   display: flex;
   align-items: center;
-  height: 100px; /* consistent height */
+  height: 100px; 
 }
 
-/* Notes list */
+
 .sidebar-notes-list {
   flex: 1;
   overflow-y: auto;
-  padding: 0.5rem 1rem 5rem; /* extra bottom padding for add-btn */
+  padding: 0.5rem 1rem 5rem; 
 }
 
-/* Each note element */
 .sidebar-note-element {
   cursor: pointer;
   display: flex;
@@ -56,7 +53,6 @@
   background-color: #e0e0e0;
 }
 
-/* Circle initials */
 .circle {
   width: 42px;
   height: 42px;
@@ -70,7 +66,6 @@
   flex-shrink: 0;
 }
 
-/* Floating Add Button */
 .add-btn {
   position: absolute;
   bottom: 20px;
@@ -96,7 +91,6 @@
   transform: scale(1.1);
 }
 
-/* Main content (next to sidebar) */
 .main-content {
   margin-left: var(--sidebar-width);
   display: flex;
@@ -104,7 +98,6 @@
   height: 100vh;
 }
 
-/* Header above notes */
 .note-header {
   flex: 0 0 60px;
   background-color: #001F8B;
@@ -116,7 +109,6 @@
   font-weight: 500;
 }
 
-/* Notes container */
 .note-view-container {
   flex: 1;
   overflow-y: auto;
@@ -124,7 +116,6 @@
   padding: 1rem;
 }
 
-/* Each note */
 .note {
   background: white;
   padding: 1rem 3rem 1.5rem 1rem;
@@ -135,7 +126,7 @@
   word-break: break-word;
 }
 
-/* Timestamp inside note */
+
 .note .time {
   position: absolute;
   bottom: 0.5rem;
@@ -144,7 +135,6 @@
   color: gray;
 }
 
-/* Example placeholder text */
 .example-txt {
   padding-top: 1rem;
   letter-spacing: 0.03em;
@@ -152,7 +142,7 @@
   font-style: italic;
 }
 
-/* Scrollbar styling */
+
 .note-view-container::-webkit-scrollbar {
   width: 0.6rem;
 }
@@ -164,7 +154,6 @@
   background: transparent;
 }
 
-/* Input container (bottom of notes view) */
 .input-container {
   flex: 0 0 auto;
   background: white;
@@ -172,7 +161,7 @@
   border-top: 1px solid #ccc;
 }
 
-/* Responsive Sidebar */
+
 @media screen and (max-width: 768px) {
   .sidebar {
     width: 100%;

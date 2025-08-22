@@ -1,37 +1,34 @@
 .note-view-container {
   width: 100%;
-  margin-left: 40px;             /* offset for sidebar */
+  margin-left: 40px;             
   margin-right: 10px;
-  height: calc(100vh - 120px);    /* height minus header + input */
+  height: calc(100vh - 120px);    
   overflow-y: auto;
-  padding: 1rem 1rem 7rem 1rem;   /* bottom space for input */
-  padding-top: 0;                 /* remove direct padding */
+  padding: 1rem 1rem 7rem 1rem;   
+  padding-top: 0;                 
   box-sizing: border-box;
-  scroll-behavior: smooth;        /* smooth scroll */
-  background: #e6f0ff;            /* light blue background */
+  scroll-behavior: smooth;       
+  background: #e6f0ff;            
   border-top-left-radius: 0.5rem;
 }
 
-/* Dark blue top strip (same as header) */
 .note-view-container::before {
   content: "";
   display: block;
-  height: 60px;                   /* height equal to header */
- /* background: #001F8B;            /* dark blue (header color) */
-  margin: -1rem -1rem 1rem -1rem; /* extend full width, pull up */
+  height: 60px;                   
+  margin: -1rem -1rem 1rem -1rem; 
   border-top-left-radius: 0.5rem; 
   border-top-right-radius: 0.5rem;
 }
 
-/* message wrapper */
+
 .note-view {
   padding: 0 1rem;
   width: 90%;
   margin: 0 auto;
-  margin-top: 1rem;               /* push msgs below blue strip */
+  margin-top: 1rem;               
 }
 
-/* each note card */
 .note {
   background: #fff;
   padding: 0.8rem 1rem;
@@ -42,7 +39,6 @@
   word-wrap: break-word;
 }
 
-/* meta info */
 .time-container {
   text-align: left;
   font-size: 0.85rem;
@@ -58,8 +54,6 @@
   letter-spacing: 0.03em;
   color: #444;
 }
-
-/* scrollbar styling */
 .note-view-container::-webkit-scrollbar {
   width: 0.6rem;
 }
@@ -73,16 +67,15 @@
   background: transparent;
 }
 
-/* mobile responsiveness */
 @media screen and (max-width: 768px) {
   .note-view-container {
     width: 100%;
     margin-left: 0;
     height: calc(100vh - 100px);
-    padding: 0 1rem 6rem 1rem;   /* no overlap with header */
+    padding: 0 1rem 6rem 1rem;   
   }
 
   .note-view-container::before {
-    height: 50px;                /* smaller header for mobile */
+    height: 50px;                
   }
 }

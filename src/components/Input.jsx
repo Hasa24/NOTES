@@ -28,13 +28,12 @@ const Input = ({ id, handleNewNote }) => {
       return;
     }
 
-    // insert into notes array
     notesGroup[groupIndex].notes.push(newNote);
 
-    // update localStorage
+  
     localStorage.setItem("noteGroups", JSON.stringify(notesGroup));
 
-    // clear the textarea
+    
     setNote("");
   };
 
