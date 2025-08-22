@@ -13,28 +13,43 @@ const NoteView = ({ name, color, id, isMobile, display, setDisplay }) => {
   React.useEffect(() => {
     const noteGroups = JSON.parse(localStorage.getItem("noteGroups")) || [];
     const groupIndex = noteGroups.findIndex((group) => group.id === id);
-
-    if (groupIndex === -1) {
-      console.error(`Group with ID ${id} not found`);
-      return;
-    }
+    if (groupIndex === -1) return;
 
     const group = noteGroups[groupIndex];
     setGroupId(group.id);
     setNotes(group.notes || []);
   }, [id]);
 
-  // Add new note
+  // Robust formatter: works with both old (date/time) and new (timestamp) notes
+  const formatNoteDateTime = (note) => {
+    if (!note) return "";
+
+    if (note.timestamp) {
+      const d = new Date(note.timestamp);
+      if (!isNaN(d)) {
+        return d.toLocaleString("en-IN", {
+          dateStyle: "medium",
+          timeStyle: "short",
+        });
+      }
+    }
+
+    if (note.date && note.time) return `${note.date} • ${note.time}`;
+    if (note.date) return note.date;
+    if (note.time) return note.time;
+    return "";
+  };
+
   const handleNewNote = (value) => {
-    setNotes((prevNotes) => {
-      const updatedNotes = [...prevNotes, value];
+    setNotes((prev) => {
+      const updated = [...prev, value];
       const noteGroups = JSON.parse(localStorage.getItem("noteGroups")) || [];
-      const groupIndex = noteGroups.findIndex((group) => group.id === id);
+      const groupIndex = noteGroups.findIndex((g) => g.id === id);
       if (groupIndex !== -1) {
-        noteGroups[groupIndex].notes = updatedNotes;
+        noteGroups[groupIndex].notes = updated;
         localStorage.setItem("noteGroups", JSON.stringify(noteGroups));
       }
-      return updatedNotes;
+      return updated;
     });
   };
 
@@ -58,16 +73,7 @@ const NoteView = ({ name, color, id, isMobile, display, setDisplay }) => {
               <div className="note-view" key={index}>
                 <div className="note">
                   <div className="note-content">{note?.content}</div>
-
-                  {/* Date + time from timestamp */}
-                  <div className="note-time">
-                    {note?.timestamp
-                      ? new Date(note.timestamp).toLocaleString("en-IN", {
-                          dateStyle: "medium",
-                          timeStyle: "short",
-                        })
-                      : ""}
-                  </div>
+                  <div className="note-time">{formatNoteDateTime(note)}</div>
                 </div>
               </div>
             ))
