@@ -11,10 +11,20 @@ const Input = ({ id, handleNewNote }) => {
   const handleSendClick = () => {
     if (!note.trim()) return; // prevent empty notes
 
+    const now = new Date();
+
     const newNote = {
-      date: new Date().toLocaleDateString(),
-      time: new Date().toLocaleTimeString(),
       content: note,
+      date: now.toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      }), // e.g. 22 Aug 2025
+      time: now.toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      }), // e.g. 11:42 AM
       id: Math.floor(Math.random() * 1000),
     };
 
@@ -29,11 +39,8 @@ const Input = ({ id, handleNewNote }) => {
     }
 
     notesGroup[groupIndex].notes.push(newNote);
-
-  
     localStorage.setItem("noteGroups", JSON.stringify(notesGroup));
 
-    
     setNote("");
   };
 
